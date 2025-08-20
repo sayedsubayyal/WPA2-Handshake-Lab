@@ -14,30 +14,24 @@ Educational lab for WPA2 handshake capture and verification
 ## Step 1: Stop Network Manager
 Prevent automatic network management from interrupting sniffing.
 
-```bash
+
 sudo systemctl stop NetworkManager
 Step 2: Put Adapter into Monitor Mode
 Switch your Wi-Fi card from normal browsing to sniffing mode.
 
-bash
-Copy
-Edit
+
 sudo ip link set wlan0 down
 sudo iw dev wlan0 set type monitor
 sudo ip link set wlan0 up
 Step 3: Lock Adapter to Target Channel
 Ensure your adapter stays on the correct Wi-Fi channel.
 
-bash
-Copy
-Edit
+
 sudo iwconfig wlan0 channel 6
 Step 4: Capture the Handshake
 Start sniffing traffic on the target network.
 
-bash
-Copy
-Edit
+
 sudo airodump-ng wlan0 -c 6 --bssid <Target_BSSID> -w capture
 wlan0 → Your Wi-Fi interface in monitor mode
 
